@@ -1,0 +1,11 @@
+import { IObservableArray, IArrayChange, IArraySplice } from "../types/observablearray";
+import { ObservableMap, IObservableMapChange } from "../types/observablemap";
+import { IObjectChange } from "../types/observableobject";
+import { IObservableValue } from "./observable";
+import { Lambda } from "../utils/utils";
+export declare function observe<T>(value: IObservableValue<T>, listener: (newValue: T, oldValue: T) => void, fireImmediately?: boolean): Lambda;
+export declare function observe<T>(observableArray: IObservableArray<T>, listener: (change: IArrayChange<T> | IArraySplice<T>) => void, fireImmediately?: boolean): Lambda;
+export declare function observe<T>(observableMap: ObservableMap<T>, listener: (change: IObservableMapChange<T>) => void, fireImmediately?: boolean): Lambda;
+export declare function observe<T>(observableMap: ObservableMap<T>, property: string, listener: (newValue: T, oldValue: T) => void, fireImmediately?: boolean): Lambda;
+export declare function observe<T extends Object>(object: T, listener: (change: IObjectChange<any, T>) => void, fireImmediately?: boolean): Lambda;
+export declare function observe<T extends Object>(object: T, property: string, listener: (newValue: T, oldValue: T) => void, fireImmediately?: boolean): Lambda;
